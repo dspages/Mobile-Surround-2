@@ -1,5 +1,24 @@
-<div >
-  
+<div class = 'sound-group-show' >
+
+  <div class = 'subscribed-users'>
+    <% sound_group.Users.each do |user| %>
+    <%= user.username %>
+  </div>
+
+
+  <div class = 'speaker-arrangement'>
+    <% if current_user.id = sound_group.Leader.id %>
+      <%=  %>
+
+    <% else  %>
+      <h5>Sound Group Leader will determine the song. </h5>
+    <% end %>
+  <div>
+
+  <div class = 'music player'>
+  </div>
+
+
 
 
 
