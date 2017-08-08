@@ -1,0 +1,2 @@
+class SoundGroupsController < ApplicationController
+end

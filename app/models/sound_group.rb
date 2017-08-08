@@ -1,0 +1,2 @@
+class SoundGroup < ApplicationRecord
+end
