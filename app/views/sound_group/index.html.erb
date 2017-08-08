@@ -1,17 +1,19 @@
 <div>
   <div class = "location-service-access-request">
-
+    <!-- <% window.navigator.geolocation %> -->
   </div>
 
 
-  <div>
-
+  <div class = 'sound-group-list'>
+    <% @sound_group.each do |group| %>
+      <%= link_to group.title, sound_group_url(group) %>
+    <% end %>
   </div>
 
 
-  <div>
-    
-  <div>
+  <div class = 'create-sound-group'>
+    <form>
+    <form>
 
-
+  <div>
 </div>
