@@ -1,0 +1,20 @@
+<div class = 'sound-group-container'>
+  <h4>New Sound Group</h4>
+  <form action = "" method= 'POST' >
+    <div>
+      <textarea value = "" name = 'sound_group[name]'
+        placeholder="Input your Sound Group Name here." >
+      </textarea>
+    </div>
+
+    <div class = 'submit-button-container'>
+      <input class = "submit-button" type="submit" value="New Sound Group">
+    </div>
+
+    <div>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+      <input type = "hidden" name = "sound_group[leader_id]" value = "<%= current_user.id %>" >
+    </div>
+
+  </form>
+</div>
