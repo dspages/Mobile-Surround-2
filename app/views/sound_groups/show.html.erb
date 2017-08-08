@@ -1,13 +1,13 @@
 <div class = 'sound-group-show' >
 
   <div class = 'subscribed-users'>
-    <% sound_group.Users.each do |user| %>
+    <% @sound_group.users.each do |user| %>
     <%= user.username %>
   </div>
 
 
   <div class = 'speaker-arrangement'>
-    <% if current_user.id = sound_group.Leader.id %>
+    <% if current_user.id = @sound_group.leader.id %>
       <%=  %>
 
     <% else  %>
