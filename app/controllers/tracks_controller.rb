@@ -1,36 +1,42 @@
 class TracksController < ApplicationController
-  before_action :require_logged_in
+  # before_action :require_logged_in
 
   def index
-    @sound_groups = SoundGroup.all
+    @track = Track.all
   end
 
   def show
-    @sound_group = SoundGroup.find(params[:id])
+    @track = Track.find(params[:id])
   end
 
   def new
+    render :new
   end
 
   def create
-    @data = params
-    @sound_group = SoundGroup.new(sound_group_params)
-    if @sound_group.save
-      redirect_to sub_url(@sound_group)
+    data = params.track.data
+    title = params.track.title
+    artist = params.track.artist
+    @track = Track.new(
+      channel1: data,
+      title: title,
+      artist: artist)
+    if @track.save
+      redirect_to sub_url(@track)
     else
-      flash.now[:errors] = @sound_group.errors.full_messages
+      flash.now[:errors] = @track.errors.full_messages
       render :new
     end
   end
 
   def destroy
-    @sub = SoundGroup.find(params[:id])
+    @track = Track.find(params[:id])
   end
 
   private
 
   def sound_group_params
-    params.require(:sound_group).permit(:title, :artist)
+    params.require(:track).permit(:title, :artist)
   end
 
 end

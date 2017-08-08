@@ -1,0 +1,16 @@
+<h4>Upload Track</h4>
+  <form action = "" method= 'POST' >
+  <label>Track Name
+    <input name="track[name]" type="text">
+  </label>
+  <br>
+  <label>Artist
+    <input name="track[artist]" type="text">
+  </label>
+  <br>
+  <input name="track[data]" type="file">
+  <br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+  <br>
+  <input type="submit">
+</form>
