@@ -1,0 +1,21 @@
+<div class = 'new-session-container'>
+  <h2>Sign in with existing account!</h2>
+  <form action="<%=  %>" method="POST">
+    <div class="">
+      <label > Username
+        <input type="text" name="user[username]" value="" >
+      </label>
+      <br>
+    </div>
+    <div class="password-container">
+      <label for="password"> Password </label>
+      <input id="password" type="password" name="user[password]" value=""
+      placeholder="at least 6 characters">
+    </div>
+    <div class="submit-button-container">
+      <input class="submit-button" type="submit" value="Sign In">
+    </div>
+      <input type="hidden" name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+  </form>
+</div>
