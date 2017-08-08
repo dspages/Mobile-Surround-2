@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :username, null: false
       t.string :password_digest, null: false
       t.string :session_token
+      t.integer :sound_group_id
       t.timestamps
     end
   end
