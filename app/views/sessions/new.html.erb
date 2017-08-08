@@ -1,5 +1,5 @@
-<div class = 'new-user-container'>
-  <h2>Create an account!</h2>
+<div class = 'new-session-container'>
+  <h2>Sign in with existing account!</h2>
   <form action="<%=  %>" method="POST">
     <div class="">
       <label > Username
@@ -13,7 +13,7 @@
       placeholder="at least 6 characters">
     </div>
     <div class="submit-button-container">
-      <input class="submit-button" type="submit" value="Sign Up">
+      <input class="submit-button" type="submit" value="Sign In">
     </div>
       <input type="hidden" name="authenticity_token"
       value="<%= form_authenticity_token %>">
