@@ -1,3 +1,18 @@
 // Place all the styles related to the session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.new-session-container{
+  margin-top: 17%;
+  width: 20%;
+  margin-left: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:rgba(255,255,255, 1);
+  border: 1px solid;
+  border-color: black;
+}
