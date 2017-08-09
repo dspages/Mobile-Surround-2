@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   belongs_to :sound_group_membership,
     primary_key: :id,
-    foreign_key: :user_id,
+    foreign_key: :sound_group_id,
     class_name: :SoundGroup
 
   has_one :sound_group_led,
