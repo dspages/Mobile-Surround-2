@@ -2,12 +2,12 @@ class User < ApplicationRecord
   validates :username, :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  belongs_to :SoundGroupMembership,
+  belongs_to :sound_group_membership,
     primary_key: :id,
-    foreign_key: :user_id,
+    foreign_key: :sound_group_id,
     class_name: :SoundGroup
 
-  has_one :SoundGroupLed,
+  has_one :sound_group_led,
     primary_key: :id,
     foreign_key: :leader_id,
     class_name: :SoundGroup
