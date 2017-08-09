@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.sound_group_id = -1
     if @user.save
       log_in!(@user)
       render :index

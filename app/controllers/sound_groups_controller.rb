@@ -19,7 +19,7 @@ class SoundGroupsController < ApplicationController
     @sound_group = SoundGroup.new(sound_group_params)
     if @sound_group.save
       current_user.sound_group_membership = @sound_group
-      redirect_to sub_url(@sound_group)
+      redirect_to sound_group_url(@sound_group)
     else
       flash.now[:errors] = @sound_group.errors.full_messages
       render :new

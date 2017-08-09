@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     params[:user][:password])
     if @user
       log_in!(@user)
-      redirect_to subs_url
+      redirect_to sound_groups_url
     else
       flash.now[:errors] = ["Invalid username or password"]
       render :new
