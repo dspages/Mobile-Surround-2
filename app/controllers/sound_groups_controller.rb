@@ -9,6 +9,7 @@ class SoundGroupsController < ApplicationController
   def show
     @sound_group = SoundGroup.find(params[:id])
     current_user.sound_group_membership = @sound_group
+    @tracks = Track.all
   end
 
   def new

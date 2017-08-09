@@ -14,16 +14,15 @@ class TracksController < ApplicationController
   end
 
   def create
-    data = params[:track][:data]
+    data = params[:track][:data].read
     name = params[:track][:name]
     artist = params[:track][:artist]
-
     @track = Track.new(
       channel1: data,
       name: name,
       artist: artist)
     if @track.save
-      redirect_to track_url(@track)
+      # redirect_to track_url(@track)
     else
       flash.now[:errors] = @track.errors.full_messages
       render :new

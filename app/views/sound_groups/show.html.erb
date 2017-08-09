@@ -3,13 +3,17 @@
   <div class = 'subscribed-users'>
     <% @sound_group.users.each do |user| %>
       <%= user.username %>
+    <% end %>
   </div>
-
+  <%= link_to "leave group", sound_groups_url %>
 
   <div class = 'speaker-arrangement'>
-    <% if current_user.id = @sound_group.leader.id %>
-      <%=  %>
-
+    <% if current_user.id == @sound_group.leader.id %>
+    <select name="tracklist">
+      <% @tracks.each do |track| %>
+        <option value="<%=track.id%>"><%=track.name%></option>
+      <% end %>
+    </select>
     <% else  %>
       <h5>Sound Group Leader will determine the song. </h5>
     <% end %>
