@@ -14,15 +14,16 @@ class TracksController < ApplicationController
   end
 
   def create
-    data = params.track.data
-    title = params.track.title
-    artist = params.track.artist
+    data = params[:track][:data]
+    name = params[:track][:name]
+    artist = params[:track][:artist]
+
     @track = Track.new(
       channel1: data,
-      title: title,
+      name: name,
       artist: artist)
     if @track.save
-      redirect_to sub_url(@track)
+      redirect_to track_url(@track)
     else
       flash.now[:errors] = @track.errors.full_messages
       render :new
@@ -36,7 +37,7 @@ class TracksController < ApplicationController
   private
 
   def sound_group_params
-    params.require(:track).permit(:title, :artist)
+    params.require(:track).permit(:name, :artist)
   end
 
 end
