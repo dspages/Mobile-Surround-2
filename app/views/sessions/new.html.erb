@@ -1,25 +1,26 @@
 <div class = 'new-session-container'>
-  <br>
-  <h2>Sign in with existing account!</h2>
-  <br>
-  <br>
-
-  <form action="<%=session_url%>" method="POST">
-    <div class="">
-      <label > Username:
-        <input type="text" name="user[username]" value="" >
-      </label>
+  <div class="new-session-form">
+    <br>
+    <h2>Sign in with existing account!</h2>
+    <br>
+    <br>
+    <form action="<%=session_url%>" method="POST">
+      <div class="">
+        <label > Username:
+          <input type="text" name="user[username]" value="" >
+        </label>
+      </div>
       <br>
-    </div>
-    <div class="password-container">
-      <label for="password"> Password : </label>
-      <input id="password" type="password" name="user[password]" value=""
-      placeholder="at least 6 characters">
-    </div>
-    <div class="submit-button-container">
-      <input class="submit-button" type="submit" value="Sign In">
-    </div>
-      <input type="hidden" name="authenticity_token"
-      value="<%= form_authenticity_token %>">
-  </form>
+      <div class="password-container">
+        <label for="password"> Password : </label>
+        <input id="password" type="password" name="user[password]" value=""
+        placeholder="at least 6 characters">
+      </div>
+      <div class="submit-button-container">
+        <input class="submit-button" type="submit" value="Sign In">
+      </div>
+        <input type="hidden" name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+    </form>
+  </div>
 </div>
