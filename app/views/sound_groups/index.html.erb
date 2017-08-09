@@ -1,9 +1,9 @@
-<div>
-  <div class = "location-service-access-request">
-  </div>
+<div class = 'sound-groups-index-container'>
+  <!-- <div class = "location-service-access-request">
+  </div> place this inside an existing div or the justify content space around will treat the empty div as an element to justify with. -->
 
-  <h4>List of existing Sound Groups</h4>
   <div class = 'sound-group-list'>
+    <h4>Existing Sound Groups</h4>
     <% @sound_groups.each do |group| %>
       <%= link_to group.title, sound_group_url(group) %>
     <% end %>
@@ -14,9 +14,8 @@
     <h4>New Sound Group</h4>
     <form action = "" method= 'POST' >
       <div>
-        <textarea value = "" name = 'sound_group[name]'
-          placeholder="Input your Sound Group Name here." >
-        </textarea>
+        <textarea value='' name='sound_group[name]'
+          placeholder="Input your Sound Group Name here." ></textarea>
       </div>
 
       <div class = 'submit-button-container'>

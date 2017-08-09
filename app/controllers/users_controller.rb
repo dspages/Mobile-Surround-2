@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user.sound_group_id = -1
     if @user.save
       log_in!(@user)
-      render :index
+      redirect_to :sound_groups
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
