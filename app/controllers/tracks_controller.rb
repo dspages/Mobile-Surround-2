@@ -39,7 +39,8 @@ class TracksController < ApplicationController
   def stream
     audio = Track.find(params[:id])
     if audio
-      send_file audio.path
+      p "/stream/#{audio.id}"
+      send_file "/stream/#{audio.id}"
     end
   end
 

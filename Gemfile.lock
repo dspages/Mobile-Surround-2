@@ -42,6 +42,10 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (7.1.4)
+    aws-s3 (0.6.3)
+      builder
+      mime-types
+      xml-simple
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -169,12 +173,14 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   annotate
+  aws-s3
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
