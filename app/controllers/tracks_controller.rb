@@ -15,6 +15,7 @@ class TracksController < ApplicationController
 
   def create
     data = params[:track][:data].read
+    p params[:track][:data].inspect
     name = params[:track][:name]
     artist = params[:track][:artist]
     @track = Track.new(

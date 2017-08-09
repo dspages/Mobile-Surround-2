@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?, :moderator?
 
   def log_in!(user)
-    session[:session_token] = user.reset_session_token!
+    session[:session_token] = user.reset_token!
   end
 
   def log_out
-    current_user.reset_session_token!
+    current_user.reset_token!
     session[:session_token] = nil
   end
 

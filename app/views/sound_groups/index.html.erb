@@ -1,11 +1,10 @@
 <div>
   <div class = "location-service-access-request">
-    <!-- <% window.navigator.geolocation %> -->
   </div>
 
-
+  <h4>List of existing Sound Groups</h4>
   <div class = 'sound-group-list'>
-    <% @sound_group.each do |group| %>
+    <% @sound_groups.each do |group| %>
       <%= link_to group.title, sound_group_url(group) %>
     <% end %>
   </div>
