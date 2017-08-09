@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  # before_action :require_logged_in
+  before_action :require_logged_in
 
   def index
     @track = Track.all
@@ -10,11 +10,13 @@ class TracksController < ApplicationController
   end
 
   def new
+    @track = Track.new
     render :new
   end
 
   def create
-    data = params[:track][:data].read
+    p params[:track][:attachment].inspect
+    data = params[:track][:attachment].read
     p params[:track][:data].inspect
     name = params[:track][:name]
     artist = params[:track][:artist]
@@ -32,6 +34,13 @@ class TracksController < ApplicationController
 
   def destroy
     @track = Track.find(params[:id])
+  end
+
+  def stream
+    audio = Track.find(params[:id])
+    if audio
+      send_file audio.path
+    end
   end
 
   private
