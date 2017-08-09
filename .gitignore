@@ -21,4 +21,4 @@
 .byebug_history
 
 # Ignore Secrets.yml
-./config/secrets.yml
+/config/secrets.yml
