@@ -42,18 +42,6 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (7.1.4)
-    aws-s3 (0.6.3)
-      builder
-      mime-types
-      xml-simple
-    aws-sdk (2.10.23)
-      aws-sdk-resources (= 2.10.23)
-    aws-sdk-core (2.10.23)
-      aws-sigv4 (~> 1.0)
-      jmespath (~> 1.0)
-    aws-sdk-resources (2.10.23)
-      aws-sdk-core (= 2.10.23)
-    aws-sigv4 (1.0.1)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -109,7 +97,9 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
-    paperclip (5.1.0)
+
+    paperclip (5.0.0)
+
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -192,15 +182,13 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   annotate
-  aws-s3
-  aws-sdk
+
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
@@ -209,7 +197,9 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
-  paperclip
+
+  paperclip (~> 5.0.0)
+
   pg
   pry-rails
   puma (~> 3.0)
