@@ -16,6 +16,8 @@
         <option value="<%=track.id%>"><%=track.name%></option>
       <% end %>
     </select>
+    <br>
+    <button type="button">Play!</button>
     <% else  %>
       <h5>Sound Group Leader will determine the song. </h5>
     <% end %>
@@ -27,7 +29,8 @@
     </div>
 
     <div>
-
+      <audio controls>
+      </audio>
     </div>
 
     <div>
