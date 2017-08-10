@@ -5,5 +5,4 @@ class Track < ApplicationRecord
     foreign_key: :track_id,
     class_name: :SoundGroup
 
-
 end

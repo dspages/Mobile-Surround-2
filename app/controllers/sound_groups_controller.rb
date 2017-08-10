@@ -7,8 +7,9 @@ class SoundGroupsController < ApplicationController
   end
 
   def show
+    current_user.sound_group_id = params[:id]
     @sound_group = SoundGroup.find(params[:id])
-    current_user.sound_group_membership = @sound_group
+    @users = @sound_group.users
     @tracks = Track.all
   end
 
@@ -18,7 +19,7 @@ class SoundGroupsController < ApplicationController
   def create
     @sound_group = SoundGroup.new(sound_group_params)
     if @sound_group.save
-      current_user.sound_group_membership = @sound_group
+      current_user.sound_group_id = @sound_group
       redirect_to sound_group_url(@sound_group)
     else
       flash.now[:errors] = @sound_group.errors.full_messages
