@@ -13,7 +13,5 @@ module MobileSurround
     # -- all .rb files in that directory are automatically loaded.
     # AWS::S3::Base.establish_connection!(
     #   :access_key_id     => 'ACCESS_KEY_ID',
-    #   :secret_access_key => 'SECRET_ACCESS_KEY'
-    # )
   end
 end
