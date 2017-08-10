@@ -4,5 +4,4 @@ Rails.application.routes.draw do
   resources :users
   resources :sound_groups
   resources :tracks
-  get '/stream/:id', to: 'tracks#stream', as: :stream
 end

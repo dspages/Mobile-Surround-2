@@ -1,10 +1,12 @@
 <div class = 'sound-group-show' >
 
-  <div class = 'subscribed-users'>
-    <% @sound_group.users.each do |user| %>
-      <%= user.username %>
-    <% end %>
-  </div>
+  <label>Members:
+    <div class = 'subscribed-users'>
+      <% @users.each do |user| %>
+        <%= user.username %>
+      <% end %>
+    </div>
+  </label>
   <%= link_to "leave group", sound_groups_url %>
 
   <div class = 'speaker-arrangement'>
@@ -14,6 +16,8 @@
         <option value="<%=track.id%>"><%=track.name%></option>
       <% end %>
     </select>
+    <br>
+    <button type="button">Play!</button>
     <% else  %>
       <h5>Sound Group Leader will determine the song. </h5>
     <% end %>
@@ -25,7 +29,8 @@
     </div>
 
     <div>
-
+      <audio controls>
+      </audio>
     </div>
 
     <div>
