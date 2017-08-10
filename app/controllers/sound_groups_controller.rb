@@ -9,6 +9,7 @@ class SoundGroupsController < ApplicationController
   def show
     current_user.sound_group_id = params[:id]
     @sound_group = SoundGroup.find(params[:id])
+    current_user.save
     @users = @sound_group.users
     @tracks = Track.all
   end

@@ -1,5 +1,5 @@
 class SoundGroup < ApplicationRecord
-  
+
   belongs_to :leader,
     primary_key: :id,
     foreign_key: :leader_id,
