@@ -25,7 +25,7 @@ class TracksController < ApplicationController
       name: name,
       artist: artist)
     if @track.save
-      
+
     else
       flash.now[:errors] = @track.errors.full_messages
       render :new
@@ -34,14 +34,6 @@ class TracksController < ApplicationController
 
   def destroy
     @track = Track.find(params[:id])
-  end
-
-  def stream
-    audio = Track.find(params[:id])
-    if audio
-      p "/stream/#{audio.id}"
-      send_file "/stream/#{audio.id}"
-    end
   end
 
   private
