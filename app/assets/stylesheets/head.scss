@@ -1,12 +1,18 @@
 
 
 
-.nav-log{
+.nav{
   display: flex;
   flex-direction: row;
-  height: 10%;
+  height: 100px;
   background: linear-gradient(to bottom left,rgb(255,255,255),rgb(220,220,220));
 }
 .logo-img{
+
+}
+.nav-log{
+  display: flex;
+  flex-direction: row;
+  align-items: right;
 
 }
