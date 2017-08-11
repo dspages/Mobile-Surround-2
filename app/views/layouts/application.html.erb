@@ -5,14 +5,21 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <%= flash[:errors] %>
-    <% if logged_in? %>
-      <%= "Welcome, #{current_user.username}" %>
-      <%= button_to "Sign Out", session_url, :method => :delete %>
-    <% else %>
-      <%= button_to "Log In", new_session_url, :method => :get %>
-      <%= button_to "Sign In", new_user_url, :method => :get%>
-    <% end %>
+    <div class='nav'>
+      <div class = 'logo'>
+        <img class='logo-img' src='http://res.cloudinary.com/dt3tnq8um/image/upload/v1502472297/mobile_surround_logo_gkitds.png' />
+      </div>
+      <%= flash[:errors] %>
+      <div class = 'nav-log'>
+        <% if logged_in? %>
+          <%= "Welcome, #{current_user.username}" %>
+          <%= button_to "Sign Out", session_url, :method => :delete %>
+        <% else %>
+          <%= button_to "Log In", new_session_url, :method => :get %>
+          <%= button_to "Sign In", new_user_url, :method => :get%>
+        <% end %>
+      </div>
+    </div>
   </head>
 
   <body>
