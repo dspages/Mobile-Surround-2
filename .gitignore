@@ -21,7 +21,6 @@
 .byebug_history
 
 # Ignore Secrets.yml
-/config/secrets.yml
 /config/cloudinary.yml
 
 # Ignore application configuration
