@@ -12,6 +12,7 @@ gem 'rails', '~> 5.0.5'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk'
 gem 'figaro'
+
 # gem 'sqlite3'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
