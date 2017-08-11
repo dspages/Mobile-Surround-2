@@ -4,7 +4,10 @@
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: 3},{
         connected: () => {console.log("connected");},
-        received: (data) => {console.log("data");}
+        received: (data) => {
+          let soundPlayer = document.getElementById('sound-player');
+          soundPlayer.play();
+        }
      });
    });
   console.log("<%=current_user.sound_group_id%>");
@@ -41,12 +44,14 @@
     </div>
 
     <div>
-      <audio src="" controls>
+      <audio id="sound-player" src="http://www.pacdv.com/sounds/voices/okay-well.wav" controls>
       </audio>
     </div>
 
     <div>
-      <button onClick="$.ajax({url: '3/play'})">Click Me to play</button>
+      <button onClick="window.navigator.geolocation.getCurrentPosition((time) =>
+        {$.ajax({url: 3/play, data: {time: time}})})"
+        >Click Me to play</button>
       <%= link_to "Play", "#{@sound_group.id}/play" %>
       <a href="#" onclick="this.style.backgroundColor='#990000'">Paint it red</a>
     </div>
