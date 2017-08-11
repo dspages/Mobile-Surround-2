@@ -31,8 +31,10 @@ class SoundGroupsController < ApplicationController
 
   def play
     @sound_group = SoundGroup.find(params[:id])
-    redirect_to sound_group_url(@sound_group)
-    SoundGroup.broadcast_to(@sound_group, :play)
+    p @sound_group
+    p "play"
+    SoundGroupChannel.broadcast_to(@sound_group, message: "play")
+    render json: {foo: ""}
   end
 
   def destroy

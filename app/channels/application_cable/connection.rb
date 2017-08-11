@@ -4,6 +4,7 @@ module ApplicationCable
 
     def connect
       self.current_user = current_user
+      
     end
 
     private

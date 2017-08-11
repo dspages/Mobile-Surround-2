@@ -1,8 +1,12 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function(event) {
-    App.cable.subscriptions.create ({ channel: "<%=current_user.sound_group_id%>"});
-  });
+    App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
+      id: 3},{
+        connected: () => {console.log("connected");},
+        received: (data) => {console.log("data");}
+     });
+   });
   console.log("<%=current_user.sound_group_id%>");
 </script>
 
@@ -42,6 +46,7 @@
     </div>
 
     <div>
+      <button onClick="$.ajax({url: '3/play'})">Click Me to play</button>
       <%= link_to "Play", "#{@sound_group.id}/play" %>
       <a href="#" onclick="this.style.backgroundColor='#990000'">Paint it red</a>
     </div>
