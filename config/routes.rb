@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :sound_groups, :only => [:index, :show, :new, :create]
   get '/sound_groups/:id/play', to: 'sound_groups#play'
   resources :tracks, :only => [:create, :destroy]
+  root to: 'users#new'
 end
