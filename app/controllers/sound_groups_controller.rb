@@ -34,7 +34,7 @@ class SoundGroupsController < ApplicationController
     p @sound_group
     p "play"
     SoundGroupChannel.broadcast_to(@sound_group, message: "play")
-    render json: {foo: ""}
+    render json: {}
   end
 
   def destroy
