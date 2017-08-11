@@ -31,8 +31,7 @@ class SoundGroupsController < ApplicationController
 
   def play
     @sound_group = SoundGroup.find(params[:id])
-    p @sound_group
-    p "play"
+    p params
     SoundGroupChannel.broadcast_to(@sound_group, message: "play")
     render json: {}
   end
