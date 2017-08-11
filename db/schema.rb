@@ -36,12 +36,16 @@ ActiveRecord::Schema.define(version: 20170810164059) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
+    t.string   "username",            null: false
+    t.string   "password_digest",     null: false
     t.string   "session_token"
     t.integer  "sound_group_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end
