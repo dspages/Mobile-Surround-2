@@ -15,6 +15,7 @@ class SoundGroupsController < ApplicationController
   end
 
   def new
+    @sound_group = SoundGroup.new
   end
 
   def create
@@ -26,6 +27,12 @@ class SoundGroupsController < ApplicationController
       flash.now[:errors] = @sound_group.errors.full_messages
       render :new
     end
+  end
+
+  def play
+    @sound_group = SoundGroup.find(params[:id])
+    redirect_to sound_group_url(@sound_group)
+    SoundGroup.broadcast_to(@sound_group, :play)
   end
 
   def destroy
