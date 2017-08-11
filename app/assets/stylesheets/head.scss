@@ -8,11 +8,14 @@
   background: linear-gradient(to bottom left,rgb(255,255,255),rgb(220,220,220));
 }
 .logo-img{
+  margin-left: 7%;
 
 }
 .nav-log{
   display: flex;
   flex-direction: row;
-  align-items: right;
-
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  margin-left: auto;
+  align-items: center;
 }
