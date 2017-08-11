@@ -10,3 +10,23 @@
   justify-content: space-around;
   width: 100%;
 }
+
+.sound-group-list{
+
+}
+.sound-group-button input{
+  box-shadow: rgb(145, 184, 179) 0px 1px 3px 0px inset;
+  background: linear-gradient(rgb(118, 141, 135) 5%, rgb(108, 124, 124) 100%) rgb(118, 141, 135);
+  border-radius: 5px;
+  border: 1px solid rgb(86, 105, 99);
+  display: inline-block;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 11px 23px;
+  text-decoration: none;
+  text-shadow: rgb(43, 102, 94) 0px -1px 0px;
+  border-radius: 40%;
+}
