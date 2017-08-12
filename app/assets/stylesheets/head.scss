@@ -9,17 +9,8 @@
 }
 .logo-img{
   margin-left: 7%;
-  padding-top: 7%;
+  padding-top: 4%;
 }
-.nav-log{
-  display: flex;
-  flex-direction: row;
-  -webkit-justify-content: flex-end;
-  justify-content: flex-end;
-  margin-left: auto;
-  align-items: center;
-}
-
 
 .nav-log{
   display: -webkit-flex;
@@ -32,7 +23,7 @@
   align-items: center;
 }
 .sound-group-show-button {
-  font-size: 25px;
+  font-size: 30px;
   color: black;
   padding: 10px;
   background-color: inherit;

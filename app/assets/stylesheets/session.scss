@@ -9,6 +9,9 @@
   background-size: cover;
   width: 100%;
   height: 100%;
+  font-family: Arial;
+  font-size: 25px;
+  font-weight: bold;
 }
 .new-session-form{
   margin-top: 20%;
@@ -21,6 +24,10 @@
   background:rgba(255,255,255, .3);
   border: 1px solid;
   border-color: black;
+}
+
+.new-session-form input {
+  width: 10vw;
 }
 //
 // .password-container {

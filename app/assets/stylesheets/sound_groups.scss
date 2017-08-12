@@ -3,12 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+.sound-group-show-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-family: Arial;
+  font-size: 25px;
+  font-weight: bold;
+
+}
+
 .sound-groups-index-container{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  font-family: Arial;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .sound-group-list{
@@ -25,7 +40,7 @@
   cursor: pointer;
   color: rgb(255, 255, 255);
   font-family: Arial;
-  font-size: 12px;
+  font-size: 25px;
   font-weight: bold;
   padding: 11px 23px;
   text-decoration: none;
@@ -33,14 +48,9 @@
   border-radius: 40%;
 }
 
-
-
-
-
-.sound-group-show-container{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-
+.sound-group-container label{
+  width: 100%;
+}
+textarea{
+  width: 100%;
 }
