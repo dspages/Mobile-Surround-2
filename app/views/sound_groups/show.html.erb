@@ -9,7 +9,7 @@
   $("<audio>")
   .on("canplaythrough", function () {
       $(this).prependTo($("body"));
-      this.play();
+      this.pause();
       // this.muted=true;
   })
  .attr("src", "http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3")
