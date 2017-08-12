@@ -19,11 +19,35 @@
   margin-left: auto;
   align-items: center;
 }
-.sound-group-show-button{
-  color: red;
-  // how to edit button for button_to
+
+
+
+
+
+.nav-log{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  margin-left: auto;
+  align-items: center;
 }
-.sound-group-show-button-form{
-  height: 80px;
-  background-color: green;
+.sound-group-show-button {
+  font-size: 25px;
+  color: black;
+  padding: 10px;
+  background-color: inherit;
+  font-family: 'Pacifico', cursive;
+  height: auto;
+  margin-right: 7%;
+  border-style: none;
+
+}
+.sound-group-show-button:hover{
+  text-decoration: none;
+  text-decoration-style: none;
+  color: inherit;
+  cursor: pointer;
 }
