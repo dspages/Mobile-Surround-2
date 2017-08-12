@@ -6,6 +6,16 @@
   let GPS_TIME;
   if(isMobileDevice()) {GPS_TIME=false;}
   else {GPS_TIME=false;}
+  $("<audio>")
+  .on("canplaythrough", function () {
+      $(this).prependTo($("body"));
+      this.play();
+      this.pause();
+  })
+ .attr("src", "http://www.mfiles.co.uk/mp3-downloads/Toccata-and-Fugue-Dm.mp3")
+ .attr("type", "audio/mpeg")
+ .attr("id", "sound-player")
+ .attr("autoplay", "false");
   document.addEventListener("DOMContentLoaded", function(event) {
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
@@ -69,9 +79,6 @@
     </div>
 
     <div>
-      <audio preload="auto" id="sound-player" src="http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3">
-      </audio>
-    </div>
     <!-- mp3-downloads/Toccata-and-Fugue-Dm.mp3 -->
     <div>
       <!-- This is just a testing tool; remove in final build -->
