@@ -10,7 +10,7 @@
   .on("canplaythrough", function () {
       $(this).prependTo($("body"));
       this.play();
-      // this.pause();
+      this.pause();
   })
  .attr("src", "http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3")
  .attr("type", "audio/mpeg")
@@ -22,6 +22,7 @@
         connected: () => {console.log("connected");},
         received: ({scheduled_time}) => {
           let soundPlayer = document.getElementById('sound-player');
+          // soundPlayer.currentTime=0;
           soundPlayer.play();
           console.log(soundPlayer);
           scheduled_time = parseInt(scheduled_time)+5000;
