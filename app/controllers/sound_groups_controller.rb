@@ -3,6 +3,7 @@ class SoundGroupsController < ApplicationController
   before_action :require_logged_in
 
   def index
+    current_user.sound_group_id = -1
     @sound_groups = SoundGroup.all
   end
 
