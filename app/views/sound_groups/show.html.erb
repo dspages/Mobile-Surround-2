@@ -4,11 +4,18 @@
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
         connected: () => {console.log("connected");},
-        received: (data) => {
+        received: ({scheduled_time}) => {
           console.log("playing?");
-          console.log(data);
+          console.log(scheduled_time);
           let soundPlayer = document.getElementById('sound-player');
-          soundPlayer.play();
+          window.navigator.geolocation.getCurrentPosition((time) => {
+            scheduled_time=parseInt(scheduled_time)+5000;
+            time=parseInt(time.timestamp);
+            console.log(time);
+            console.log(scheduled_time);
+            console.log(scheduled_time-time);
+            setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+          });
         }
      });
    });
@@ -53,10 +60,10 @@
 
     <div>
       <button onClick=
-        "$.ajax({url: '1/play'});"
+        "$.ajax({url: '<%=current_user.sound_group_id%>/play'});"
         >Play without GEO</button>
       <button onClick="window.navigator.geolocation.getCurrentPosition((time) =>
-        {$.ajax({url: '1/play', data: {time: time}})})"
+        {$.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: time}})})"
         >Play with GEO</button>
     </div>
 
