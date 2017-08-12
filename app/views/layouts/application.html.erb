@@ -8,12 +8,13 @@
     <%= javascript_include_tag 'application' %>
     <div class='nav'>
       <div class = 'logo'>
-        <img class='logo-img' src='https://res.cloudinary.com/dt3tnq8um/image/upload/c_scale,w_350/v1502472297/mobile_surround_logo_gkitds.png' />
+        <img class='logo-img' src='https://res.cloudinary.com/dt3tnq8um/image/upload/c_scale,h_75,w_300/v1502472297/mobile_surround_logo_gkitds.png' />
       </div>
       <%= flash[:errors] %>
       <div class = 'nav-log'>
         <% if logged_in? %>
           <%= button_to "Sign Out", session_url, {class: 'sound-group-show-button', form_class: "sound-group-show-button-form", :method => :delete} %>
+          <br><br>
           <%= button_to "Return Home", sound_groups_url, {class: 'sound-group-show-button', form_class: "sound-group-show-button-form", :method => :get} %>
         <% else %>
           <%= button_to "Log In", new_session_url,{class: 'sound-group-show-button', form_class: 'sound-group-show-button-form', :method => :get} %>
