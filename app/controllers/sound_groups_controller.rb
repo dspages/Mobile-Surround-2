@@ -30,8 +30,8 @@ class SoundGroupsController < ApplicationController
   end
 
   def play
-    @sound_group = SoundGroup.find(params[:id])
     # p params
+    @sound_group = SoundGroup.find(params[:id])
     SoundGroupChannel.broadcast_to(@sound_group, scheduled_time:
     params[:time] [:timestamp])
     render json: {}

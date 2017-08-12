@@ -1,39 +1,67 @@
-# README
+# Mobile Surround
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Use the app live here!
+![Live] (https://live_site_url)
 
-Things you may want to cover:
+## Summary
+Mobile surround is a web app for mobile devices that takes an audio file (on a rails back-end), down-mixes it into component channels and sends them to a group of cell phones to play surround sound. Users can create new sound groups and upload new sound files on the fly, and create a surround sound environment with nothing but phones. The sound files themselves are hosted using AWS and synchrony among a group is established using ActionCable.
 
-* Ruby version
+## Features
 
-* System dependencies
+### Feature 1: Sound groups
+Users can create new sound groups and then their friends can join.
 
-* Configuration
+![Screenshot](screenthot_url)
 
-* Database creation
+### Feature 2: Sound uploading
+Users can upload sound files for later viewing.
 
-* Database initialization
+![Screenshot](screenthot_url)
 
-* How to run the test suite
+### Feature 3: Sound downloading
+When a sound group member picks a track from the menu, all users in the group are sent a message via ActionCable to download their channel.
 
-* Services (job queues, cache servers, search engines, etc.)
+![Screenshot](screenshot_url)
 
-* Deployment instructions
+### Feature 4: Sound playback
+Users can play sound tracks and then other users in the same sound group will all hear them synchronously. Under the hood, a schedule-delay algorithm is used to maximize the synchrony of the sound onset.
 
-* ...
+![Screenshot](screenshot_url)
 
+### Feature 5: Mobile and laptop compatibility
+The page was made with mobile-first styling. Since GPS is the most accurate source of time on mobile devices, mobile devices establish synchrony using GPS pings. If the app detects the user is on a laptop it instead uses the computer's internal clocks.
 
-Paperclip is now compatible with aws-sdk >= 2.0.0.
+### Feature 6: Down-mixing
+The sound is down-mixed into its constituent channels, allowing each user to play a different channel of the sound and creating a true surround sound experience.
 
-If you are using S3 storage, aws-sdk >= 2.0.0 requires you to make a few small
-changes:
+## Synchrony algorithm
+A key technical feature of this app is establishing synchrony of sound onset using ActionCable. Internet latency has unacceptable variability for the functionality we require. Instead, when a user sends a play sound command, a timestamp is taken and sent to the server.
 
-* You must set the `s3_region`
-* If you are explicitly setting permissions anywhere, such as in an initializer,
-  note that the format of the permissions changed from using an underscore to
-  using a hyphen. For example, `:public_read` needs to be changed to
-  `public-read`.
+```javascript
+window.navigator.geolocation.getCurrentPosition((time) =>
+{$.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: time}})});
+```
 
-For a walkthrough of upgrading from 4 to 5 and aws-sdk >= 2.0 you can watch
-http://rubythursday.com/episodes/ruby-snack-27-upgrade-paperclip-and-aws-sdk-in-prep-for-rails-5
+The rails server receives this message on a custom route and uses ActionCable to send the master timestamp to every member of the SoundGroup.
+
+```ruby
+@sound_group = SoundGroup.find(params[:id])
+SoundGroupChannel.broadcast_to(@sound_group, scheduled_time:
+params[:time] [:timestamp])
+```
+
+Finally, each of the clients, when it "receives" the ActionCable signal, appends a fixed amount of time and delays itself until the established master time before executing the playsound function.
+
+```javascript
+received: ({scheduled_time}) => {
+  let soundPlayer = document.getElementById('sound-player');
+  scheduled_time = parseInt(scheduled_time)+2000;
+  window.navigator.geolocation.getCurrentPosition((time) => {
+    time=parseInt(time.timestamp);
+    setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+  });
+}
+```
+
+## Future plans
+We intend to remain active with developing MobileSurroud further. We intend to create an API layer that allows other apps to use this app for surround sound in video players, games, etc. It would also be interesting to create a third, bluetooth-based mechanism for sound synchronization. We would also like to add a pause/unpause button. Finally, we would like to make a native mobile port of the app.
