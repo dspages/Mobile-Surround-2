@@ -9,7 +9,6 @@
   $("<audio>")
   .on("canplaythrough", function () {
       $(this).prependTo($("body"));
-      this.play();
       this.pause();
   })
  .attr("src", "http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3")
@@ -85,6 +84,7 @@
         "let soundPlayer = document.getElementById('sound-player');
         soundPlayer.play();"
         >Play sound on my Device</button>
+        <button onClick="">READY!</button>
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
           window.navigator.geolocation.getCurrentPosition((time) =>
