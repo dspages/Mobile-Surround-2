@@ -13,7 +13,7 @@
       <div class = 'nav-log'>
         <% if logged_in? %>
           <%= "Welcome, #{current_user.username}" %>
-          <%= button_to "Sign Out", {session_url, :method => :delete},{class: 'sound-group-show-button'} %>
+          <%= button_to "Sign Out", session_url, {class: 'sound-group-show-button', form_class: "sound-group-show-button-form", :method => :delete} %>
         <% else %>
           <%= button_to "Log In", new_session_url, :method => :get %>
           <%= button_to "Sign Up", new_user_url, :method => :get%>
