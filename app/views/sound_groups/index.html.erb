@@ -6,6 +6,7 @@
     <h4>Existing Sound Groups</h4>
     <% @sound_groups.each do |group| %>
       <%= link_to group.name, sound_group_url(group) %>
+      <br><br>
     <% end %>
   </div>
 
