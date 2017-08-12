@@ -12,8 +12,10 @@
 }
 
 .sound-group-list{
-
+  display: flex;
+  flex-direction: column;
 }
+
 .sound-group-button input{
   box-shadow: rgb(145, 184, 179) 0px 1px 3px 0px inset;
   background: linear-gradient(rgb(118, 141, 135) 5%, rgb(108, 124, 124) 100%) rgb(118, 141, 135);

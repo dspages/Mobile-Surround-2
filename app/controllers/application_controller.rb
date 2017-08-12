@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   def log_out
     current_user.reset_token!
+    current_user.sound_group_id=-1
     session[:session_token] = nil
   end
 

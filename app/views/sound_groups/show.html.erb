@@ -1,21 +1,32 @@
 
 <script>
+  function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  };
+  let GPS_TIME;
+  if(isMobileDevice()) {GPS_TIME=true;}
+  else {GPS_TIME=false;}
   document.addEventListener("DOMContentLoaded", function(event) {
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
         connected: () => {console.log("connected");},
         received: ({scheduled_time}) => {
-          console.log("playing?");
-          console.log(scheduled_time);
           let soundPlayer = document.getElementById('sound-player');
-          window.navigator.geolocation.getCurrentPosition((time) => {
-            scheduled_time=parseInt(scheduled_time)+5000;
-            time=parseInt(time.timestamp);
-            console.log(time);
-            console.log(scheduled_time);
-            console.log(scheduled_time-time);
+          scheduled_time = parseInt(scheduled_time)+10000;
+          console.log("received play message from server, scheduled time: "+scheduled_time);
+          if(GPS_TIME){
+            window.navigator.geolocation.getCurrentPosition((time) => {
+              time=parseInt(time.timestamp);
+              console.log("GPS time: "+time);
+              console.log("delta: "+(scheduled_time-time));
+              setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+            });
+          }else{
+            time=parseInt(new Date().getTime());
+            console.log("Clock time: "+time);
+            console.log("delta: "+(scheduled_time-time));
             setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
-          });
+          }
         }
      });
    });
@@ -42,7 +53,6 @@
       <% end %>
     </select>
     <br>
-    <button type="button">Play!</button>
     <% else  %>
       <h5>Sound Group Leader will determine the song. </h5>
     <% end %>
@@ -54,17 +64,27 @@
     </div>
 
     <div>
-      <audio id="sound-player" src="http://www.pacdv.com/sounds/voices/okay-well.wav" controls>
+      <audio id="sound-player" src="http://www.pacdv.com/sounds/voices/okay-well.wav">
       </audio>
     </div>
 
     <div>
+      <!-- This is just a testing tool; remove in final build -->
       <button onClick=
-        "$.ajax({url: '<%=current_user.sound_group_id%>/play'});"
-        >Play without GEO</button>
-      <button onClick="window.navigator.geolocation.getCurrentPosition((time) =>
-        {$.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: time}})})"
-        >Play with GEO</button>
+        "let soundPlayer = document.getElementById('sound-player');
+        soundPlayer.play();"
+        >Play sound on my Device</button>
+      <!-- This is the real button. Move it to leader-only in final build? -->
+      <button onClick="if(GPS_TIME){
+          window.navigator.geolocation.getCurrentPosition((time) =>
+          {$.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: time}})});
+        }
+        else
+        {
+          let time=new Date().getTime();
+          $.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: {timestamp: time}}});
+        }"
+        >Play sound on all linked Devices</button>
     </div>
 
   </div>
