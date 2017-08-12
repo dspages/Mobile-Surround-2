@@ -14,16 +14,17 @@
   console.log("<%=current_user.sound_group_id%>");
 </script>
 
-<div class = 'sound-group-show' >
-
-  <label>Members:
-    <div class = 'subscribed-users'>
-      <% @users.each do |user| %>
-        <%= user.username %>
-      <% end %>
-    </div>
-  </label>
-  <%= link_to "leave group", sound_groups_url %>
+<div class = 'sound-group-show-container' >
+  <div>
+    <label>Members:
+      <div class = 'subscribed-users'>
+        <% @users.each do |user| %>
+          <%= user.username %>
+        <% end %>
+      </div>
+    </label>
+    <%= link_to "leave group", sound_groups_url %>
+  </div>
 
   <div class = 'speaker-arrangement'>
     <% if current_user.id == @sound_group.leader.id %>
