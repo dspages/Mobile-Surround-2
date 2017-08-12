@@ -3,6 +3,7 @@
   <head>
     <title>MobileSurround</title>
     <%= csrf_meta_tags %>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <div class='nav'>
@@ -12,7 +13,6 @@
       <%= flash[:errors] %>
       <div class = 'nav-log'>
         <% if logged_in? %>
-          <%= "Welcome, #{current_user.username}" %>
           <%= button_to "Sign Out", session_url, {class: 'sound-group-show-button', form_class: "sound-group-show-button-form", :method => :delete} %>
           <%= button_to "Return Home", sound_groups_url, {class: 'sound-group-show-button', form_class: "sound-group-show-button-form", :method => :get} %>
         <% else %>
