@@ -11,8 +11,8 @@
       id: "<%=current_user.sound_group_id%>"},{
         connected: () => {console.log("connected");},
         received: ({scheduled_time}) => {
-          soundPlayer.play();
           let soundPlayer = document.getElementById('sound-player');
+          soundPlayer.play();
           scheduled_time = parseInt(scheduled_time)+5000;
           console.log("received play message from server, scheduled time: "+scheduled_time);
           if(GPS_TIME){
