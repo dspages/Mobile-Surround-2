@@ -81,12 +81,14 @@
     <div>
     <!-- mp3-downloads/Toccata-and-Fugue-Dm.mp3 -->
     <div>
+      <audio id="dummy"></audio>
       <!-- This is just a testing tool; remove in final build -->
       <button onClick=
         "let soundPlayer = document.getElementById('sound-player');
         soundPlayer.play();"
         >Play sound on my Device</button>
-        <button onClick="let soundPlayer = document.getElementById('sound-player');">READY!</button>
+        <button onClick="let soundPlayer = document.getElementById('dummy');
+        soundPlayer.play();">READY!</button>
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
           window.navigator.geolocation.getCurrentPosition((time) =>
