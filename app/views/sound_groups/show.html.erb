@@ -29,6 +29,7 @@
  .attr("id", "sound-player")
  .attr("autoplay","");
   document.addEventListener("DOMContentLoaded", function(event) {
+    window.navigator.geolocation.watchPosition(()=>{});
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
         connected: () => {console.log("connected");},
@@ -39,8 +40,6 @@
           // soundPlayer.muted=false;
           // soundPlayer.currentTime = 0.0;
           // soundPlayer.play();
-          //Pacific	Aug 17, 2027	18:30:17	PDT
-          //Pacific	Aug 17, 2027	18:32:33	PDT
           console.log(soundPlayer);
           scheduled_time = parseInt(scheduled_time)+1000;
           console.log("received play message from server, scheduled time: "+scheduled_time);
