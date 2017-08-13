@@ -41,7 +41,7 @@
           // soundPlayer.currentTime = 0.0;
           // soundPlayer.play();
           console.log(soundPlayer);
-          scheduled_time = parseInt(scheduled_time)+1000;
+          scheduled_time = parseInt(scheduled_time)+10000;
           console.log("received play message from server, scheduled time: "+scheduled_time);
           if(GPS_TIME){
             window.navigator.geolocation.getCurrentPosition((time) => {
