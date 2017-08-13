@@ -4,7 +4,7 @@
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
   };
   let GPS_TIME;
-  if(isMobileDevice()) {GPS_TIME=false;}
+  if(isMobileDevice()) {GPS_TIME=true;}
   else {GPS_TIME=false;}
  $("<audio>")
    .on("canplaythrough", function () {
@@ -104,7 +104,7 @@
         <button onClick=
         "let dummy = document.getElementById('dummy');
         dummy.play();
-        dummy.src='http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3'">READY!</button>
+        dummy.src='http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3'">LOAD MUSIC!</button>
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
           window.navigator.geolocation.getCurrentPosition((time) =>
