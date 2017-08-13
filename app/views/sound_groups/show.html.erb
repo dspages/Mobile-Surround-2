@@ -15,7 +15,7 @@
   .attr("src", "https://freesound.org/data/previews/131/131660_2398403-lq.mp3")
   .attr("type", "audio/mpeg")
   .attr("id", "dummy")
-  .attr("autoplay", "false");
+  .attr("autoplay","true");
   $("<audio>")
   .on("canplaythrough", function () {
       $(this).prependTo($("body"));
@@ -25,7 +25,7 @@
  .attr("src", "http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3")
  .attr("type", "audio/mpeg")
  .attr("id", "sound-player")
- .attr("autoplay", "false");
+ .attr("autoplay","true");
   document.addEventListener("DOMContentLoaded", function(event) {
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
