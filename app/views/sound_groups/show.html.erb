@@ -38,22 +38,24 @@
 
           // soundPlayer.muted=false;
           // soundPlayer.currentTime = 0.0;
-          soundPlayer.play();
+          // soundPlayer.play();
+          //Pacific	Aug 17, 2027	18:30:17	PDT
+          //Pacific	Aug 17, 2027	18:32:33	PDT
           console.log(soundPlayer);
-          scheduled_time = parseInt(scheduled_time)+5000;
+          scheduled_time = parseInt(scheduled_time)+1000;
           console.log("received play message from server, scheduled time: "+scheduled_time);
           if(GPS_TIME){
             window.navigator.geolocation.getCurrentPosition((time) => {
               time=parseInt(time.timestamp);
               console.log("GPS time: "+time);
               console.log("delta: "+(scheduled_time-time));
-              // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+              setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
             });
           }else{
             time=parseInt(new Date().getTime());
             console.log("Clock time: "+time);
             console.log("delta: "+(scheduled_time-time));
-            // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+            setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
           }
         }
      });
@@ -108,7 +110,8 @@
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
           window.navigator.geolocation.getCurrentPosition((time) =>
-          {$.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: time}})});
+          { console.log('scheduled time output: '+time.timestamp);
+            $.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: time}})});
         }
         else
         {
