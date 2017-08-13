@@ -15,13 +15,17 @@ class TracksController < ApplicationController
   end
 
   def create
-    p params[:track][:attachment].inspect
-    data = params[:track][:attachment].read
-    p params[:track][:data].inspect
+    # p params[:track][:attachment].inspect
+    # data = params[:track][:attachment].read
+    # p params[:track][:data].inspect
     name = params[:track][:name]
     artist = params[:track][:artist]
     @track = Track.new(
-      channel1: data,
+      channel1: params[:track][:channel1],
+      channel2: params[:track][:channel2],
+      channel3: params[:track][:channel3],
+      channel4: params[:track][:channel4],
+      channel5: params[:track][:channel5],
       name: name,
       artist: artist)
     if @track.save
