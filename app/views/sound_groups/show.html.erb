@@ -81,15 +81,18 @@
   </div>
 
   <div class = 'speaker-arrangement'>
-    <select name="channel-picker" onchange="
-    console.log(this.value);
-    localStorage.setItem('channel', this.value);">
-      <option value="ch1">1</option>
-      <option value="ch2">2</option>
-      <option value="ch3">3</option>
-      <option value="ch4">4</option>
-      <option value="ch5">5</option>
-    </select>
+    <label>Step 1: Each user picks a channel
+      <select name="channel-picker" onchange="
+      console.log(this.value);
+      localStorage.setItem('channel', this.value);">
+        <option value="ch1">1</option>
+        <option value="ch2">2</option>
+        <option value="ch3">3</option>
+        <option value="ch4">4</option>
+        <option value="ch5">5</option>
+      </select>
+    </label>
+    <label>Step 2: One user picks a track
     <% if current_user.id == @sound_group.leader.id || true %>
     <select name="tracklist" onchange="
     $.ajax({
@@ -103,6 +106,7 @@
         <option value="<%=track.id%>"><%=track.name%></option>
       <% end %>
     </select>
+    </label>
     <br>
     <% else  %>
       <h5>Sound Group Leader will determine the song. </h5>
@@ -121,15 +125,15 @@
       <!-- This is just a testing tool; remove in final build -->
       <br><br>
       <button onClick=
-        "let soundPlayer = document.getElementById('sound-player');
-        soundPlayer.play();"
-        >Play sound on my device</button>
+        "let dummy = document.getElementById('dummy');
+        dummy.play();"
+        >Test sound on my device</button>
         <br><br>
         <button onClick=
         "let dummy = document.getElementById('dummy');
         dummy.play();
         dummy.src=localStorage.getItem(localStorage.getItem('channel'));
-        ">Load sound!</button>
+        ">Step 3: Mobile users preload sound</button>
         <br><br>
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
@@ -142,7 +146,7 @@
           let time=new Date().getTime();
           $.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: {timestamp: time}}});
         }"
-        >Play sound on all linked devices</button>
+        >Step 4: One user clicks play!</button>
     </div>
     <br><br><br><br>
 
