@@ -8,6 +8,7 @@
   else {GPS_TIME=false;}
  $("<audio>")
    .on("canplaythrough", function () {
+      console.log("canplay event fire for dummy");
        $(this).prependTo($("body"));
        this.pause();
        // this.muted=true;
@@ -15,9 +16,10 @@
   .attr("src", "https://freesound.org/data/previews/131/131660_2398403-lq.mp3")
   .attr("type", "audio/mpeg")
   .attr("id", "dummy")
-  .attr("autoplay","true");
+  .attr("autoplay","");
   $("<audio>")
   .on("canplaythrough", function () {
+      console.log("canplay event fire for sound");
       $(this).prependTo($("body"));
       this.pause();
       // this.muted=true;
@@ -25,7 +27,7 @@
  .attr("src", "http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3")
  .attr("type", "audio/mpeg")
  .attr("id", "sound-player")
- .attr("autoplay","true");
+ .attr("autoplay","");
   document.addEventListener("DOMContentLoaded", function(event) {
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
