@@ -1,7 +1,7 @@
 
 <div class = "track-upload-container">
   <h4>Upload Track</h4>
-
+  <%= flash[:errors] %>
   <%= form_for @track, html: { multipart: true } do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>

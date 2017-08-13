@@ -28,8 +28,8 @@ textarea {
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
-  -webkit-justify-content: flex-end;
-  justify-content: flex-end;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
   margin-left: auto;
   align-items: center;
 }
@@ -40,6 +40,7 @@ textarea {
   background-color: inherit;
   font-family: 'Pacifico', cursive;
   height: auto;
+  margin-right: 20px;
   padding-right: 0%;
   border-style: none;
 
