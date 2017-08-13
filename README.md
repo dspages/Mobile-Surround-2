@@ -64,4 +64,5 @@ received: ({scheduled_time}) => {
 ```
 
 ## Future plans
+- robust response to sound-group-show audio choices.
 We intend to remain active with developing MobileSurroud further. We intend to create an API layer that allows other apps to use this app for surround sound in video players, games, etc. It would also be interesting to create a third, bluetooth-based mechanism for sound synchronization. We would also like to add a pause/unpause button. Finally, we would like to make a native mobile port of the app.
