@@ -4,7 +4,7 @@
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
   };
   let GPS_TIME;
-  if(isMobileDevice()) {GPS_TIME=true;}
+  if(isMobileDevice()) {GPS_TIME=false; window.navigator.geolocation.watchPosition(()=>{});}
   else {GPS_TIME=false;}
  $("<audio>")
    .on("canplaythrough", function () {
@@ -29,7 +29,6 @@
  .attr("id", "sound-player")
  .attr("autoplay","");
   document.addEventListener("DOMContentLoaded", function(event) {
-    window.navigator.geolocation.watchPosition(()=>{});
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
         connected: () => {console.log("connected");},
@@ -41,7 +40,7 @@
           // soundPlayer.currentTime = 0.0;
           // soundPlayer.play();
           console.log(soundPlayer);
-          scheduled_time = parseInt(scheduled_time)+10000;
+          scheduled_time = parseInt(scheduled_time)+500;
           console.log("received play message from server, scheduled time: "+scheduled_time);
           if(GPS_TIME){
             window.navigator.geolocation.getCurrentPosition((time) => {
