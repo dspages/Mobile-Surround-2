@@ -128,7 +128,7 @@
         <button onClick=
         "let dummy = document.getElementById('dummy');
         dummy.play();
-        dummy.src='http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3';
+        dummy.src=localStorage.getItem(localStorage.getItem('channel'));
         ">Load sound!</button>
         <br><br>
       <!-- This is the real button. Move it to leader-only in final build? -->
