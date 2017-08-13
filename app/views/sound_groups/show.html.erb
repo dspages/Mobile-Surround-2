@@ -67,7 +67,7 @@
 </script>
 
 <div class = 'sound-group-show-container' >
-  <div>
+  <div class = 'members'>
     <label>Members:
       <br><br>
       <div class = 'subscribed-users'>
@@ -77,49 +77,14 @@
         <% end %>
       </div>
     </label>
+    <br><br><br>
     <%= link_to "leave group", sound_groups_url %>
   </div>
 
-  <div class = 'speaker-arrangement'>
-    <label>Step 1: Each user picks a channel here
-      <select name="channel-picker" onchange="
-      console.log(this.value);
-      localStorage.setItem('channel', this.value);">
-        <option value="ch1">1</option>
-        <option value="ch2">2</option>
-        <option value="ch3">3</option>
-        <option value="ch4">4</option>
-        <option value="ch5">5</option>
-      </select>
-    </label>
-    <label>Step 2: One user picks a track here
-    <% if current_user.id == @sound_group.leader.id || true %>
-    <select name="tracklist" onchange="
-    $.ajax({
-    url: '<%=current_user.sound_group_id%>',
-    data: {sound_group: {track_id: this.value}},
-    method: 'patch'
-    });
-    ">
-      <option value="-1"></option>
-      <% @tracks.each do |track| %>
-        <option value="<%=track.id%>"><%=track.name%></option>
-      <% end %>
-    </select>
-    </label>
-    <br>
-    <% else  %>
-      <h5>Sound Group Leader will determine the song. </h5>
-    <% end %>
-  </div>
 
-  <div class = 'music player'>
+  <div class = 'music-player'>
     <br><br><br>
-    <div>
-      <%=  %>
-    </div>
 
-    <div>
     <!-- mp3-downloads/Toccata-and-Fugue-Dm.mp3 -->
     <div class="sound-controls">
       <!-- This is just a testing tool; remove in final build -->
@@ -150,23 +115,38 @@
     </div>
     <br><br><br><br>
 
-
-    <!-- <div>
-      <form action="https://mobile-surround-dev.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="key" value="uploads/${filename}">
-        <input type="hidden" name="AWSAccessKeyId" value="YOUR_AWS_ACCESS_KEY">
-        <input type="hidden" name="acl" value="private">
-        <input type="hidden" name="success_action_redirect" value="http://localhost/">
-        <input type="hidden" name="policy" value="YOUR_POLICY_DOCUMENT_BASE64_ENCODED">
-        <input type="hidden" name="signature" value="YOUR_CALCULATED_SIGNATURE">
-        <input type="hidden" name="Content-Type" value="audio/">
-
-        File to upload to S3:
-        <input name="file" type="file">
-        <br>
-        <input type="submit" value="Upload File to S3">
-      </form>
-    </div> -->
+    <div class = 'speaker-arrangement'>
+      <label>Step 1: Each user picks a channel here
+        <select name="channel-picker" onchange="
+        console.log(this.value);
+        localStorage.setItem('channel', this.value);">
+          <option value="ch1">1</option>
+          <option value="ch2">2</option>
+          <option value="ch3">3</option>
+          <option value="ch4">4</option>
+          <option value="ch5">5</option>
+        </select>
+      </label>
+      <label>Step 2: One user picks a track here
+      <% if current_user.id == @sound_group.leader.id || true %>
+      <select name="tracklist" onchange="
+      $.ajax({
+      url: '<%=current_user.sound_group_id%>',
+      data: {sound_group: {track_id: this.value}},
+      method: 'patch'
+      });
+      ">
+        <option value="-1"></option>
+        <% @tracks.each do |track| %>
+          <option value="<%=track.id%>"><%=track.name%></option>
+        <% end %>
+      </select>
+      </label>
+      <br>
+      <% else  %>
+        <h5>Sound Group Leader will determine the song. </h5>
+      <% end %>
+    </div>
 
   </div>
 

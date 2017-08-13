@@ -12,6 +12,8 @@
   font-family: Arial;
   font-size: 25px;
   font-weight: bold;
+  background: linear-gradient(to bottom left, #63A3CC ,#5F92B2);
+  height: 100%;
 }
 
 .sound-groups-index-container{
@@ -23,6 +25,8 @@
   font-family: Arial;
   font-size: 25px;
   font-weight: bold;
+  background: linear-gradient(to bottom left, #5F92B2 ,#63A3CC);
+  height: 100%;
 }
 
 .sound-group-list{
@@ -52,6 +56,10 @@
   border-radius: 40%;
 }
 
+.speaker-arrangement{
+  padding: 10%;
+}
+
 .sound-group-container label{
   width: 100%;
 }
@@ -59,6 +67,19 @@
 .sound-controls{
   display: flex;
   flex-direction: column;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.members{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.music-player{
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 textarea{
@@ -66,6 +87,7 @@ textarea{
   padding-right: 0px;
   border-right: 0px;
 }
+
 
 button {
     background-color: lightgrey; /* Green */
@@ -77,6 +99,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    cursor: pointer;
 }
 
 button:hover{
