@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  validates :username, :session_token, presence: true, uniqueness: true
+  validates :username, :session_token, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_one :sound_group_led,

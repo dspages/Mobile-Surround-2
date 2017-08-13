@@ -29,7 +29,7 @@ class TracksController < ApplicationController
       name: name,
       artist: artist)
     if @track.save
-
+      redirect_to sound_groups_url
     else
       flash.now[:errors] = @track.errors.full_messages
       render :new
