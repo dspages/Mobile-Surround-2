@@ -21,6 +21,24 @@ Users can upload sound files for later viewing.
 ### Feature 3: Sound downloading
 When a sound group member picks a track from the menu, all users in the group are sent a message via ActionCable to download their channel.
 
+```HTML
+<label>Step 2: One user picks a track
+<% if current_user.id == @sound_group.leader.id || true %>
+<select name="tracklist" onchange="
+$.ajax({
+url: '<%=current_user.sound_group_id%>',
+data: {sound_group: {track_id: this.value}},
+method: 'patch'
+});
+">
+  <option value="-1"></option>
+  <% @tracks.each do |track| %>
+    <option value="<%=track.id%>"><%=track.name%></option>
+  <% end %>
+</select>
+</label>
+```
+
 ![Screenshot](screenshot_url)
 
 ### Feature 4: Sound playback
@@ -45,6 +63,7 @@ window.navigator.geolocation.getCurrentPosition((time) =>
 The rails server receives this message on a custom route and uses ActionCable to send the master timestamp to every member of the SoundGroup.
 
 ```ruby
+
 @sound_group = SoundGroup.find(params[:id])
 SoundGroupChannel.broadcast_to(@sound_group, scheduled_time:
 params[:time] [:timestamp])
