@@ -94,6 +94,39 @@
         dummy.play();"
         >Test sound on my device</button>
         <br><br>
+        <div class = 'speaker-arrangement'>
+          <label>Step 1: Each user picks a channel here
+            <select name="channel-picker" onchange="
+            console.log(this.value);
+            localStorage.setItem('channel', this.value);">
+              <option value="ch1">1</option>
+              <option value="ch2">2</option>
+              <option value="ch3">3</option>
+              <option value="ch4">4</option>
+              <option value="ch5">5</option>
+            </select>
+          </label>
+          <br><br><br>
+          <label>Step 2: One user picks a track here
+          <% if current_user.id == @sound_group.leader.id || true %>
+          <select name="tracklist" onchange="
+          $.ajax({
+          url: '<%=current_user.sound_group_id%>',
+          data: {sound_group: {track_id: this.value}},
+          method: 'patch'
+          });
+          ">
+            <option value="-1"></option>
+            <% @tracks.each do |track| %>
+              <option value="<%=track.id%>"><%=track.name%></option>
+            <% end %>
+          </select>
+          </label>
+          <br><br><br>
+          <% else  %>
+            <h5>Sound Group Leader will determine the song. </h5>
+          <% end %>
+        </div>
         <button onClick=
         "let dummy = document.getElementById('dummy');
         dummy.play();
@@ -115,38 +148,7 @@
     </div>
     <br><br><br><br>
 
-    <div class = 'speaker-arrangement'>
-      <label>Step 1: Each user picks a channel here
-        <select name="channel-picker" onchange="
-        console.log(this.value);
-        localStorage.setItem('channel', this.value);">
-          <option value="ch1">1</option>
-          <option value="ch2">2</option>
-          <option value="ch3">3</option>
-          <option value="ch4">4</option>
-          <option value="ch5">5</option>
-        </select>
-      </label>
-      <label>Step 2: One user picks a track here
-      <% if current_user.id == @sound_group.leader.id || true %>
-      <select name="tracklist" onchange="
-      $.ajax({
-      url: '<%=current_user.sound_group_id%>',
-      data: {sound_group: {track_id: this.value}},
-      method: 'patch'
-      });
-      ">
-        <option value="-1"></option>
-        <% @tracks.each do |track| %>
-          <option value="<%=track.id%>"><%=track.name%></option>
-        <% end %>
-      </select>
-      </label>
-      <br>
-      <% else  %>
-        <h5>Sound Group Leader will determine the song. </h5>
-      <% end %>
-    </div>
+
 
   </div>
 
