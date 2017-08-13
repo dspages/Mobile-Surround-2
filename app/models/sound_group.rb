@@ -1,5 +1,7 @@
 class SoundGroup < ApplicationRecord
 
+  validates :name, length: {minimum: 2}
+
   belongs_to :leader,
     primary_key: :id,
     foreign_key: :leader_id,
