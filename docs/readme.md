@@ -13,12 +13,13 @@ https://trello.com/b/x8lJ6aQa/mobile-surround
 
 
 ## MVP:
-- React native app running on iPhone.
+- Rails app running a WebView.
 - Synchronize time with external source of truth.
 - Play same audio file on multiple devices.
 - Production readme.
-- Host on App Store.
-- Pausing song mid play.
+- One device causes song to play on all subscribed to channel.
+- Action Cable Functionality.
+- Hosted (on heroku or aws.)
 
 ## Stretch:
 - Play same audio file at same time with negligible offset.
