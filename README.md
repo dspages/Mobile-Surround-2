@@ -4,7 +4,7 @@ Use the app live here!
 ![Live] (https://mobile-surround.herokuapp.com)
 
 ## Summary
-Mobile surround is a web app for mobile devices that takes an audio file (on a rails back-end), down-mixes it into component channels and sends them to a group of cell phones to play surround sound. Users can create new sound groups and upload new sound files on the fly, and create a surround sound environment with nothing but phones. The sound files themselves are hosted using AWS and synchrony among a group is established using ActionCable.
+Mobile surround is a web app for mobile devices that takes an audio file (on a rails back-end), down-mixes it into component channels and sends them to a group of iPhones to play surround sound. Users can create new sound groups and upload new sound files on the fly, and create a surround sound environment with nothing but phones. The sound files themselves are hosted using http links and synchrony among a group is established using ActionCable.
 
 ## Features
 
@@ -64,5 +64,13 @@ received: ({scheduled_time}) => {
 ```
 
 ## Future plans
-- robust response to sound-group-show audio choices.
-We intend to remain active with developing MobileSurroud further. We intend to create an API layer that allows other apps to use this app for surround sound in video players, games, etc. It would also be interesting to create a third, bluetooth-based mechanism for sound synchronization. We would also like to add a pause/unpause button. Finally, we would like to make a native mobile port of the app.
+- We intend to remain active with developing MobileSurroud further.
+  - Robust response to sound-group-show audio choices.
+  - Android functionality.
+  - AWS S3 hosting for upload/download.
+  - ChannelSplitterNode for down-mixing.
+  - React-Native/Mobile build.
+  - API-Layer for other apps to use.
+  - Blue tooth hand shaking.
+  - Blue tooth time sync.
+  - Pause/unpause buttons.
