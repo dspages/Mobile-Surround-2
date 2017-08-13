@@ -64,7 +64,7 @@
   </div>
 
   <div class = 'speaker-arrangement'>
-    <% if current_user.id == @sound_group.leader.id %>
+    <% if current_user.id == @sound_group.leader.id || true %>
     <select name="tracklist">
       <% @tracks.each do |track| %>
         <option value="<%=track.id%>"><%=track.name%></option>
@@ -84,17 +84,17 @@
 
     <div>
     <!-- mp3-downloads/Toccata-and-Fugue-Dm.mp3 -->
-    <div>
+    <div class="sound-controls">
       <!-- This is just a testing tool; remove in final build -->
       <button onClick=
         "let soundPlayer = document.getElementById('sound-player');
         soundPlayer.play();"
-        >Play sound on my Device</button>
+        >Play sound on my device</button>
         <button onClick=
         "let dummy = document.getElementById('dummy');
         dummy.play();
         dummy.src='http://www.mfiles.co.uk/mp3-downloads/prelude04.mp3';
-        ">LOAD MUSIC!</button>
+        ">Load sound!</button>
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
           window.navigator.geolocation.getCurrentPosition((time) =>
@@ -106,7 +106,7 @@
           let time=new Date().getTime();
           $.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: {timestamp: time}}});
         }"
-        >Play sound on all linked Devices</button>
+        >Play sound on all linked devices</button>
     </div>
     <br><br><br><br>
 
