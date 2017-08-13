@@ -4,7 +4,7 @@
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
   };
   let GPS_TIME;
-  if(isMobileDevice()) {GPS_TIME=true;}
+  if(isMobileDevice()) {GPS_TIME=false;}
   else {GPS_TIME=false;}
  $("<audio>")
    .on("canplaythrough", function () {
@@ -27,7 +27,7 @@
 
           // soundPlayer.muted=false;
           // soundPlayer.currentTime = 0.0;
-          // soundPlayer.play();
+          soundPlayer.play();
           console.log(soundPlayer);
           scheduled_time = parseInt(scheduled_time)+500;
           console.log("received play message from server, scheduled time: "+scheduled_time);
@@ -36,13 +36,13 @@
               time=parseInt(time.timestamp);
               console.log("GPS time: "+time);
               console.log("delta: "+(scheduled_time-time));
-              setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+              // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
             });
           }else{
             time=parseInt(new Date().getTime());
             console.log("Clock time: "+time);
             console.log("delta: "+(scheduled_time-time));
-            setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+            // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
           }
         }
      });
