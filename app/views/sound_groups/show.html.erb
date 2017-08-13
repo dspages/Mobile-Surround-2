@@ -6,7 +6,7 @@
   let GPS_TIME;
   if(isMobileDevice()) {GPS_TIME=false;}
   else {GPS_TIME=false;}
- $("<audio>")
+  $("<audio>")
    .on("canplaythrough", function () {
       console.log("canplay event fire for dummy");
       this.pause();
@@ -17,32 +17,49 @@
   .attr("id", "dummy")
   .attr("autoplay","");
   document.addEventListener("DOMContentLoaded", function(event) {
+    localStorage.setItem('channel',"ch1");
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
         connected: () => {console.log("connected");},
         disconnected: () =>{App.cable.subscriptions.remove(this);},
-        received: ({scheduled_time}) => {
-          // let soundPlayer = document.getElementById('sound-player');
+        received: (info) => {
           let soundPlayer = document.getElementById('dummy');
+          if(info.track){
+            localStorage.setItem("ch1", info.track.ch1);
+            localStorage.setItem("ch2", info.track.ch2);
+            localStorage.setItem("ch3", info.track.ch3);
+            localStorage.setItem("ch4", info.track.ch4);
+            localStorage.setItem("ch5", info.track.ch5);
+            console.log(localStorage.getItem("channel"));
+            console.log(localStorage.getItem(info.track.ch5));
+            console.log(localStorage.getItem(localStorage.getItem("channel")));
+            soundPlayer.src = localStorage.getItem(localStorage.getItem("channel"));
+          }
+          if(info.scheduled_time)
+          {
+            scheduled_time=info.scheduled_time;
+            // let soundPlayer = document.getElementById('sound-player');
 
-          // soundPlayer.muted=false;
-          // soundPlayer.currentTime = 0.0;
-          soundPlayer.play();
-          console.log(soundPlayer);
-          scheduled_time = parseInt(scheduled_time)+500;
-          console.log("received play message from server, scheduled time: "+scheduled_time);
-          if(GPS_TIME){
-            window.navigator.geolocation.getCurrentPosition((time) => {
-              time=parseInt(time.timestamp);
-              console.log("GPS time: "+time);
+
+            // soundPlayer.muted=false;
+            // soundPlayer.currentTime = 0.0;
+            soundPlayer.play();
+            console.log(soundPlayer);
+            scheduled_time = parseInt(scheduled_time)+500;
+            console.log("received play message from server, scheduled time: "+scheduled_time);
+            if(GPS_TIME){
+              window.navigator.geolocation.getCurrentPosition((time) => {
+                time=parseInt(time.timestamp);
+                console.log("GPS time: "+time);
+                console.log("delta: "+(scheduled_time-time));
+                // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+              });
+            }else{
+              time=parseInt(new Date().getTime());
+              console.log("Clock time: "+time);
               console.log("delta: "+(scheduled_time-time));
               // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
-            });
-          }else{
-            time=parseInt(new Date().getTime());
-            console.log("Clock time: "+time);
-            console.log("delta: "+(scheduled_time-time));
-            // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
+            }
           }
         }
      });
@@ -64,8 +81,23 @@
   </div>
 
   <div class = 'speaker-arrangement'>
+    <select name="channel-picker" onchange="
+    console.log(this.value);
+    localStorage.setItem('channel', this.value);">
+      <option value="ch1">1</option>
+      <option value="ch2">2</option>
+      <option value="ch3">3</option>
+      <option value="ch4">4</option>
+      <option value="ch5">5</option>
+    </select>
     <% if current_user.id == @sound_group.leader.id || true %>
-    <select name="tracklist">
+    <select name="tracklist" onchange="
+    $.ajax({
+    url: '<%=current_user.sound_group_id%>',
+    data: {sound_group: {track_id: this.value}},
+    method: 'patch'
+    });
+    ">
       <% @tracks.each do |track| %>
         <option value="<%=track.id%>"><%=track.name%></option>
       <% end %>

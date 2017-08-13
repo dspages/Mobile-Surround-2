@@ -30,6 +30,19 @@ class SoundGroupsController < ApplicationController
     end
   end
 
+  def update
+    @sound_group = SoundGroup.find(params[:id])
+    @sound_group.update_attributes(sound_group_params)
+    SoundGroupChannel.broadcast_to(@sound_group, track: {
+    ch1: Track.find(params[:sound_group][:track_id]).channel1,
+    ch2: Track.find(params[:sound_group][:track_id]).channel2,
+    ch3: Track.find(params[:sound_group][:track_id]).channel3,
+    ch4: Track.find(params[:sound_group][:track_id]).channel4,
+    ch5: Track.find(params[:sound_group][:track_id]).channel5,
+    })
+    render json: {}
+  end
+
   def play
     # p params
     @sound_group = SoundGroup.find(params[:id])
