@@ -81,7 +81,7 @@
   </div>
 
   <div class = 'speaker-arrangement'>
-    <label>Step 1: Each user picks a channel
+    <label>Step 1: Each user picks a channel here
       <select name="channel-picker" onchange="
       console.log(this.value);
       localStorage.setItem('channel', this.value);">
@@ -92,7 +92,7 @@
         <option value="ch5">5</option>
       </select>
     </label>
-    <label>Step 2: One user picks a track
+    <label>Step 2: One user picks a track here
     <% if current_user.id == @sound_group.leader.id || true %>
     <select name="tracklist" onchange="
     $.ajax({
@@ -133,7 +133,7 @@
         "let dummy = document.getElementById('dummy');
         dummy.play();
         dummy.src=localStorage.getItem(localStorage.getItem('channel'));
-        ">Step 3: Mobile users preload sound</button>
+        ">Step 3: Mobile users click this to preload sound</button>
         <br><br>
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
@@ -146,7 +146,7 @@
           let time=new Date().getTime();
           $.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: {timestamp: time}}});
         }"
-        >Step 4: One user clicks play!</button>
+        >Step 4: One user clicks this to play!</button>
     </div>
     <br><br><br><br>
 
