@@ -25,8 +25,8 @@ class SoundGroupsController < ApplicationController
       current_user.sound_group_id = @sound_group
       redirect_to sound_group_url(@sound_group)
     else
-      flash.now[:errors] = @sound_group.errors.full_messages
-      render :new
+      flash[:errors] = @sound_group.errors.full_messages
+      redirect_to sound_groups_url
     end
   end
 
