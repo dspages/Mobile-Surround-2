@@ -16,6 +16,16 @@
  .attr("type", "audio/mpeg")
  .attr("id", "sound-player")
  .attr("autoplay", "false");
+ $("<audio>")
+   .on("canplaythrough", function () {
+       $(this).prependTo($("body"));
+       this.pause();
+       // this.muted=true;
+   })
+  .attr("src", "http://www.wavsource.com/snds_2017-07-30_6786517629734627/people/comedians/allen_arrogh.wav")
+  .attr("type", "audio/wav")
+  .attr("id", "dummy")
+  .attr("autoplay", "false");
   document.addEventListener("DOMContentLoaded", function(event) {
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
@@ -81,8 +91,6 @@
     <div>
     <!-- mp3-downloads/Toccata-and-Fugue-Dm.mp3 -->
     <div>
-      <audio id="dummy" src="http://www.wavsource.com/snds_2017-07-30_6786517629734627/people/comedians/allen_arrogh.wav">
-      </audio>
       <!-- This is just a testing tool; remove in final build -->
       <button onClick=
         "let soundPlayer = document.getElementById('sound-player');
