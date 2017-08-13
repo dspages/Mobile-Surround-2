@@ -93,3 +93,4 @@ received: ({scheduled_time}) => {
   - Blue tooth hand shaking.
   - Blue tooth time sync.
   - Pause/unpause buttons.
+  - Add user Avatar/Name/Email etc.
