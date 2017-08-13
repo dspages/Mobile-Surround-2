@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    require_logged_out
   end
 
   def create

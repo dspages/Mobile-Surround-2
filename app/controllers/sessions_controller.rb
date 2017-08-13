@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    render :new
+    require_logged_out
   end
 
   def create

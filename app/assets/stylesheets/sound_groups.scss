@@ -12,7 +12,6 @@
   font-family: Arial;
   font-size: 25px;
   font-weight: bold;
-
 }
 
 .sound-groups-index-container{
@@ -33,7 +32,7 @@
 
 .sound-group-container{
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .sound-group-button input{
@@ -56,6 +55,29 @@
 .sound-group-container label{
   width: 100%;
 }
+
+.sound-controls{
+  display: flex;
+  flex-direction: column;
+}
+
 textarea{
   width: 100%;
+}
+
+button {
+    background-color: lightgrey; /* Green */
+    border: 1px solid black;
+    color: #444444;
+    padding: 5px;
+    margin: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button:hover{
+  color: #000000;
+  background-color: #BBBBBB;
 }
