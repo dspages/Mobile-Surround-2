@@ -4,7 +4,7 @@ Use the app live here!
 ![Live] (https://mobile-surround.herokuapp.com)
 
 ## Summary
-Mobile surround is a web app for mobile devices that takes an audio file (on a rails back-end), down-mixes it into component channels and sends them to a group of iPhones to play surround sound. Users can create new sound groups and upload new sound files on the fly, and create a surround sound environment with nothing but phones. The sound files themselves are hosted using http links and synchrony among a group is established using ActionCable.
+Mobile surround is a web app for mobile devices that takes an audio file (on a rails back-end), down-mixes it into component channels and sends them to a group of iPhones to play multiple parts of a sound file. For example, one phone might play the base, another plays guitar, a third phone plays vocals, and a fourth phone plays percussion. Users can create new sound groups and upload new sound files on the fly, and create a surround sound environment with nothing but phones. The sound files themselves are hosted using http links and synchrony among a group is established using ActionCable.
 
 ![Screenshot](./docs/images/logo.png)
 
