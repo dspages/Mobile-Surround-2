@@ -114,7 +114,7 @@
           ">
             <option value="-1"></option>
             <% @tracks.each do |track| %>
-              <option value="<%=track.id%>"><%=track.name%></option>
+              <option value="<%=track.id%>"><%=track.name%>:<%=track.artist%></option>
             <% end %>
           </select>
           </label>
