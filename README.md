@@ -6,23 +6,28 @@ Use the app live here!
 ## Summary
 Mobile surround is a web app for mobile devices that takes an audio file (on a rails back-end), down-mixes it into component channels and sends them to a group of iPhones to play surround sound. Users can create new sound groups and upload new sound files on the fly, and create a surround sound environment with nothing but phones. The sound files themselves are hosted using http links and synchrony among a group is established using ActionCable.
 
+![Screenshot](./docs/images/logo.png)
+
 ## Features
 
 ### Feature 1: Auth
 Users are greeted by a pleasant login screen where they can log in to their account.
 
+![Screenshot](./docs/images/sign_in_splash.png)
+
 ### Feature 2: Sound groups
 Users can create new sound groups and then their friends can join.
 
-![Screenshot](screenthot_url)
+![Screenshot](./docs/images/sound_group_no_nav_with_menu_in_use.png)
 
 ### Feature 3: Soundfile linking
 Users can create new sound file links. Each URL represents a different channel of surround-sound or a different instrument of a split sound.
 
-![Screenshot](screenthot_url)
 
 ### Feature 4: Sound coordination
 When a sound group member picks a track from the menu, all users in the group are sent a message via ActionCable to download their channel.
+
+![Screenshot](./docs/images/music_select.png)
 
 ```HTML
 <label>Step 2: One user picks a track
@@ -42,15 +47,16 @@ method: 'patch'
 </label>
 ```
 
-![Screenshot](screenshot_url)
 
 ### Feature 5: Sound playback
 Users can play sound tracks and then other users in the same sound group will all hear them synchronously. Under the hood, a schedule-delay algorithm is used to maximize the synchrony of the sound onset.
 
-![Screenshot](screenshot_url)
+
 
 ### Feature 6: Mobile and laptop compatibility
 The app was made with mobile-first styling. But it is compatible with laptop and desktop devices as well.
+
+
 
 ## Synchrony algorithm
 A key technical feature of this app is establishing synchrony of sound onset using ActionCable. Internet latency has unacceptable variability for the functionality we require. Instead, when a user sends a play sound command, a timestamp is taken and sent to the server.
@@ -83,9 +89,12 @@ received: ({scheduled_time}) => {
 ```
 
 ### Known bugs/limitations
--Users must follow the instructions on the sound group show page EXACTLY. If more than one user picks a song, if a mobile user fails to click the mobile load button, or if multiple users pick a song, results may be unpredictable. This is fixable but will require a bit of coding.
--Mobile-to-mobile and laptop-to-laptop results in reasonably good synchrony, but mobile-to-laptop synchrony is mediocre.
--App is very slow and barely functional on iPhone 3 and earlier.
+- Users must follow the instructions on the sound group show page EXACTLY. If more than one user picks a song, if a mobile user fails to click the mobile load button, or if multiple users pick a song, results may be unpredictable. This is fixable but will require a bit of coding.
+
+![Screenshot](./docs/images/instructions_with_selected_options.png)
+
+- Mobile-to-mobile and laptop-to-laptop results in reasonably good synchrony, but mobile-to-laptop synchrony is mediocre.
+- App is very slow and barely functional on iPhone 3 and earlier.
 
 ## Future plans
 - We intend to remain active with developing MobileSurroud further.
