@@ -77,25 +77,22 @@
         <% end %>
       </div>
     </label>
-    <br><br><br>
+    <br><br>
     <%= link_to "leave group", sound_groups_url %>
   </div>
 
 
   <div class = 'music-player'>
-    <br><br><br>
 
     <!-- mp3-downloads/Toccata-and-Fugue-Dm.mp3 -->
     <div class="sound-controls">
       <!-- This is just a testing tool; remove in final build -->
-      <br><br>
       <button onClick=
         "let dummy = document.getElementById('dummy');
         dummy.play();"
         >Test sound on my device</button>
-        <br><br>
         <div class = 'speaker-arrangement'>
-          <label>Step 1: Each user picks a channel here
+          <label>Step 1: Each user picks a different channel here
             <select name="channel-picker" onchange="
             console.log(this.value);
             localStorage.setItem('channel', this.value);">
@@ -106,8 +103,7 @@
               <option value="ch5">5</option>
             </select>
           </label>
-          <br><br><br>
-          <label>Step 2: One user picks a track here
+          <label>Step 2: One user picks a song here
           <% if current_user.id == @sound_group.leader.id || true %>
           <select name="tracklist" onchange="
           $.ajax({
@@ -122,7 +118,6 @@
             <% end %>
           </select>
           </label>
-          <br><br><br>
           <% else  %>
             <h5>Sound Group Leader will determine the song. </h5>
           <% end %>
@@ -131,8 +126,7 @@
         "let dummy = document.getElementById('dummy');
         dummy.play();
         dummy.src=localStorage.getItem(localStorage.getItem('channel'));
-        ">Step 3: Mobile users click this to preload sound</button>
-        <br><br>
+        ">Step 3: Mobile users click this to preload sound, then wait to load</button>
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
           window.navigator.geolocation.getCurrentPosition((time) =>
@@ -144,9 +138,8 @@
           let time=new Date().getTime();
           $.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: {timestamp: time}}});
         }"
-        >Step 4: One user clicks this to play!</button>
+        >Step 4: Once mobile loading finishes, one user clicks this to play!</button>
     </div>
-    <br><br><br><br>
 
 
 

@@ -58,7 +58,10 @@
 }
 
 .speaker-arrangement{
-  padding: 10%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
 }
 
 .sound-group-container label{
@@ -74,7 +77,6 @@
 
 .members{
   width: 20%;
-
 }
 
 .music-player{
