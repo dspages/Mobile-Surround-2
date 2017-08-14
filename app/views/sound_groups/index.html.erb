@@ -3,15 +3,16 @@
   </div> place this inside an existing div or the justify content space around will treat the empty div as an element to justify with. -->
 
   <div class = 'sound-group-list'>
+    <li class="sound-group-list-item">
     <h4>Existing Sound Groups</h4>
+    <br>
+    </li>
     <% @sound_groups.each do |group| %>
+      <li class="sound-group-list-item">
       <%= link_to group.name, sound_group_url(group) %>
-      <br><br>
+      <br>
+      </li>
     <% end %>
-  </div>
-
-  <div>
-    <%= link_to "Create a new sound track link", new_track_url %>
   </div>
 
   <div class = 'sound-group-container'>
@@ -37,5 +38,9 @@
       </div>
 
     </form>
+    <br><br><br>
+    <div>
+      <%= link_to "Create a new sound track link", new_track_url %>
+    </div>
   </div>
 </div>
