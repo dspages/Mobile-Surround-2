@@ -21,7 +21,8 @@
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
         connected: () => {console.log("connected");},
-        disconnected: () =>{App.cable.subscriptions.remove(this);},
+        disconnected: () =>{current_user.sound_group_id = -1
+          App.cable.subscriptions.remove(this);},
         received: (info) => {
           let soundPlayer = document.getElementById('dummy');
           if(info.track){
