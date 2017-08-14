@@ -9,7 +9,7 @@ Mobile surround is a web app for mobile devices that takes an audio file (on a r
 ## Features
 
 ### Feature 1: Auth
-Users are greeted by a pleasant login screen where they can log in to their account.
+Users are greeted by a pleasant login screen where they can create or log in to an account.
 
 ### Feature 2: Sound groups
 Users can create new sound groups and then their friends can join.
@@ -86,6 +86,7 @@ received: ({scheduled_time}) => {
 -Users must follow the instructions on the sound group show page EXACTLY. If more than one user picks a song, if a mobile user fails to click the mobile load button, or if multiple users pick a song, results may be unpredictable. This is fixable but will require a bit of coding.
 -Mobile-to-mobile and laptop-to-laptop results in reasonably good synchrony, but mobile-to-laptop synchrony is mediocre.
 -App is very slow and barely functional on iPhone 3 and earlier.
+-Artifacts of users linger in a sound group even after the actual user has left.
 
 ## Future plans
 - We intend to remain active with developing MobileSurroud further.
