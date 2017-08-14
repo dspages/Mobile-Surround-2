@@ -4,6 +4,7 @@ class SoundGroupsController < ApplicationController
 
   def index
     current_user.sound_group_id = -1
+    current_user.save
     @sound_groups = SoundGroup.all
   end
 
