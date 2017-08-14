@@ -8,7 +8,7 @@
   else {GPS_TIME=false;}
   $("<audio>")
    .on("canplaythrough", function () {
-      console.log("canplay event fire for dummy");
+      // console.log("canplay event fire for dummy");
       this.pause();
       $(this).prependTo($("body"));
    })
@@ -20,7 +20,7 @@
     localStorage.setItem('channel',"ch1");
     App.cable.subscriptions.create ({ channel: "SoundGroupChannel",
       id: "<%=current_user.sound_group_id%>"},{
-        connected: () => {console.log("connected");},
+        connected: () => {},
         disconnected: () =>{current_user.sound_group_id = -1
           App.cable.subscriptions.remove(this);},
         received: (info) => {
@@ -31,9 +31,9 @@
             localStorage.setItem("ch3", info.track.ch3);
             localStorage.setItem("ch4", info.track.ch4);
             localStorage.setItem("ch5", info.track.ch5);
-            console.log(localStorage.getItem("channel"));
-            console.log(localStorage.getItem(info.track.ch5));
-            console.log(localStorage.getItem(localStorage.getItem("channel")));
+            // console.log(localStorage.getItem("channel"));
+            // console.log(localStorage.getItem(info.track.ch5));
+            // console.log(localStorage.getItem(localStorage.getItem("channel")));
             soundPlayer.src = localStorage.getItem(localStorage.getItem("channel"));
           }
           if(info.scheduled_time)
@@ -45,20 +45,20 @@
             // soundPlayer.muted=false;
             // soundPlayer.currentTime = 0.0;
             soundPlayer.play();
-            console.log(soundPlayer);
+            // console.log(soundPlayer);
             scheduled_time = parseInt(scheduled_time)+500;
-            console.log("received play message from server, scheduled time: "+scheduled_time);
+            // console.log("received play message from server, scheduled time: "+scheduled_time);
             if(GPS_TIME){
               window.navigator.geolocation.getCurrentPosition((time) => {
                 time=parseInt(time.timestamp);
-                console.log("GPS time: "+time);
-                console.log("delta: "+(scheduled_time-time));
+                // console.log("GPS time: "+time);
+                // console.log("delta: "+(scheduled_time-time));
                 // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
               });
             }else{
               time=parseInt(new Date().getTime());
-              console.log("Clock time: "+time);
-              console.log("delta: "+(scheduled_time-time));
+              // console.log("Clock time: "+time);
+              // console.log("delta: "+(scheduled_time-time));
               // setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
             }
           }
@@ -95,7 +95,6 @@
         <div class = 'speaker-arrangement'>
           <label>Step 1: Each user picks a different channel here
             <select name="channel-picker" onchange="
-            console.log(this.value);
             localStorage.setItem('channel', this.value);">
               <option value="ch1">1</option>
               <option value="ch2">2</option>
@@ -131,7 +130,7 @@
       <!-- This is the real button. Move it to leader-only in final build? -->
       <button onClick="if(GPS_TIME){
           window.navigator.geolocation.getCurrentPosition((time) =>
-          { console.log('scheduled time output: '+time.timestamp);
+          {
             $.ajax({url: '<%=current_user.sound_group_id%>/play', data: {time: time}})});
         }
         else

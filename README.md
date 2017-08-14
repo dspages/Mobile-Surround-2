@@ -23,7 +23,6 @@ Users can create new sound groups and then their friends can join.
 ### Feature 3: Soundfile linking
 Users can create new sound file links. Each URL represents a different channel of surround-sound or a different instrument of a split sound.
 
-
 ### Feature 4: Sound coordination
 When a sound group member picks a track from the menu, all users in the group are sent a message via ActionCable to download their channel.
 
@@ -47,16 +46,11 @@ method: 'patch'
 </label>
 ```
 
-
 ### Feature 5: Sound playback
 Users can play sound tracks and then other users in the same sound group will all hear them synchronously. Under the hood, a schedule-delay algorithm is used to maximize the synchrony of the sound onset.
 
-
-
 ### Feature 6: Mobile and laptop compatibility
 The app was made with mobile-first styling. But it is compatible with laptop and desktop devices as well.
-
-
 
 ## Synchrony algorithm
 A key technical feature of this app is establishing synchrony of sound onset using ActionCable. Internet latency has unacceptable variability for the functionality we require. Instead, when a user sends a play sound command, a timestamp is taken and sent to the server.
@@ -80,7 +74,7 @@ Finally, each of the clients, when it "receives" the ActionCable signal, appends
 ```javascript
 received: ({scheduled_time}) => {
   let soundPlayer = document.getElementById('sound-player');
-  scheduled_time = parseInt(scheduled_time)+2000;
+  scheduled_time = parseInt(scheduled_time)+200;
   window.navigator.geolocation.getCurrentPosition((time) => {
     time=parseInt(time.timestamp);
     setTimeout(()=>{soundPlayer.play();}, scheduled_time-time);
@@ -89,11 +83,11 @@ received: ({scheduled_time}) => {
 ```
 
 ### Known bugs/limitations
-- Users must follow the instructions on the sound group show page EXACTLY. If more than one user picks a song, if a mobile user fails to click the mobile load button, or if multiple users pick a song, results may be unpredictable. This is fixable but will require a bit of coding.
+- Users must follow the instructions on the sound group show page EXACTLY. If more than one user picks a song, if a mobile user fails to click the mobile load button, or if multiple users pick a song, results may be unpredictable. This will be fixed in a future update.
 
 ![Screenshot](./docs/images/instructions_with_selected_options.png)
 
-- Mobile-to-mobile and laptop-to-laptop results in reasonably good synchrony, but mobile-to-laptop synchrony is mediocre.
+- Mobile-to-mobile and laptop-to-laptop results in good synchrony, but mobile-to-laptop synchrony is mediocre.
 - App is very slow and barely functional on iPhone 3 and earlier.
 
 ## Future plans
